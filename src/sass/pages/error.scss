@@ -1,0 +1,24 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__404 {
+        color: #FF6060;
+        font-size: 288px;
+        margin: 0;
+        font-weight: 700;
+    }
+    &__text {
+        color: #FF6060;
+        font-size: 36px;
+        font-weight: 500;
+    }
+    &__link {
+        color: #FF6060;
+        position: absolute;
+        bottom: 150px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}

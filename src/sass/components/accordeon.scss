@@ -1,0 +1,22 @@
+.accordeon {
+    margin: 2em 0;
+    &__top {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        background: #FF6060;
+        border-radius: 5px;
+        color: white;
+        justify-content: space-between;
+        padding: 0 1.5em;
+    }
+    &__bottom {
+        background: #F7F7F7;
+        border-radius: 0 0 5px 5px;
+        color: #FF6060;
+        padding: 1em 1.5em;
+        font-weight: 400;
+        font-size: 24px;
+    }
+}

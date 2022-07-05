@@ -1,0 +1,15 @@
+.about {
+    margin-top: 3%;
+    position: relative;
+    padding: 0 3.5%;
+    &__banner {
+        border-radius: 25px;
+        width: 100%;
+        object-fit: cover;
+        filter: brightness(70%);
+    }
+    &__accordeon {
+        width: 80%;
+        margin: 0 10%;
+    }
+}
