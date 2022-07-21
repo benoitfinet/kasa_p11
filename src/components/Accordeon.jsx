@@ -1,7 +1,6 @@
 import '../sass/components/accordeon.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 
 function Accordeon({Title, children}) {

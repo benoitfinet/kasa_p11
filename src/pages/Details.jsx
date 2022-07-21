@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import Accordeon from "../components/Accordeon";
 import Stars from '../components/Stars';
 import '../sass/pages/details.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
  
 function Details() {
     const { logementID } = useParams()
@@ -10,6 +12,15 @@ function Details() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    let [carouselItem, setcarouselItem] = useState(0);
+
+    function reduceCarousel() {
+        setcarouselItem(carouselItem => carouselItem - 1)
+    }
+
+    function augmentCarousel() {
+        setcarouselItem(carouselItem => carouselItem + 1)
+    }
 
     useEffect(() => {
         fetch('https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P9+React+1/logements.json')
@@ -33,6 +44,13 @@ function Details() {
             setLoading(false);
           });
       }, []);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+            setcarouselItem(carouselItem => carouselItem + 1)
+        }, 5000);
+        return () => clearInterval(interval)
+    })
  
     return (
         <div>
@@ -45,7 +63,15 @@ function Details() {
                     <div key={data.id}>
                     {data.id === logementID ?
                         <div className='details'>
-                            <img className='details__img' src={data.cover} alt={data.title}></img>
+                            <div className='details__containerImage'>
+                                <FontAwesomeIcon className='details__containerImage--chevronleft fa-5x' icon={faChevronLeft} onClick={reduceCarousel}/>
+                                <img className='details__containerImage--img' src={data.pictures[carouselItem] === undefined
+                                    ?
+                                    setcarouselItem(carouselItem => carouselItem - carouselItem) && data.pictures[carouselItem - carouselItem]
+                                    :
+                                    data.pictures[carouselItem]} alt={data.title}></img>
+                                <FontAwesomeIcon className='details__containerImage--chevronRight fa-5x' icon={faChevronRight} onClick={augmentCarousel}/>
+                            </div>
                             <div className='details__top'>
                                 <div className='details__top--left'>
                                     <p className='details__title'>{data.title}</p>
@@ -72,16 +98,14 @@ function Details() {
                                 <div className='details__accordeon--both'>
                                     <Accordeon
                                     Title="Description"
-                                    Text={data.description}
-                                    />
+                                    >{data.description}</Accordeon>
                                 </div>
                                 <div className='details__accordeon--both'>
                                     <Accordeon
                                     Title="Équipements"
-                                    Text={data.equipments.map(equipement => {
+                                    >{data.equipments.map(equipement => {
                                         return <p className='details__accordeon--item' key={equipement}>{equipement}</p>
-                                    })}
-                                    />
+                                    })}</Accordeon>
                                 </div>
                             </div>
                         </div>

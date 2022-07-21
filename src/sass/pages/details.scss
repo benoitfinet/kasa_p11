@@ -1,10 +1,32 @@
 .details {
     padding: 0 3.5%;
-    &__img {
-        width: 100%;
-        object-fit: cover;
-        height: 40vh;
-        border-radius: 25px;
+    &__containerImage {
+        position: relative;
+        &--img {
+            width: 100%;
+            object-fit: cover;
+            height: 40vh;
+            border-radius: 25px;
+            display: block;
+        }
+        &--chevronleft {
+            position: absolute;
+            left: 1%;
+            bottom: 0;
+            top: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+        }
+        &--chevronRight {
+            position: absolute;
+            right: 1%;
+            bottom: 0;
+            top: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+        }
     }
     &__top {
         display: flex;
