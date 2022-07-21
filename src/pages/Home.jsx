@@ -39,7 +39,7 @@ function Home() {
                 <div>{`There is a problem fetching the post data - ${error}`}</div>
             )}
             <article className='home__banner' alt='banner' style={{ backgroundImage: `url(${Test})` }}>
-            <p className='home__textBanner'>Chez vous, partout et ailleurs</p>
+              <p className='home__textBanner'>Chez vous, partout et ailleurs</p>
             </article>
             <div className='cardList'>
                 {data && data.map(({cover, title, id }) => (
