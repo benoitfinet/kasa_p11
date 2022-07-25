@@ -1,4 +1,4 @@
-import Test from '../assets/bannerHome.png';
+import banner from '../assets/bannerHome.png';
 import '../sass/pages/home.scss';
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
@@ -38,9 +38,10 @@ function Home() {
             {error && (
                 <div>{`There is a problem fetching the post data - ${error}`}</div>
             )}
-            <article className='home__banner' alt='banner' style={{ backgroundImage: `url(${Test})` }}>
-              <p className='home__textBanner'>Chez vous, partout et ailleurs</p>
-            </article>
+            <div className='home__banner'>
+              <img className='home__banner--img' alt='banner' src={banner} />
+              <p className='home__banner--textBanner'>Chez vous, partout et ailleurs</p>
+            </div>
             <div className='cardList'>
                 {data && data.map(({cover, title, id }) => (
                   <article className='cardList__content' key={title} >

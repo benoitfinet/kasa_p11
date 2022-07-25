@@ -1,3 +1,6 @@
+@import "../utils/mixins.scss";
+@import "../utils/variables.scss";
+
 .details {
     padding: 0 3.5%;
     &__containerImage {
@@ -17,6 +20,7 @@
             margin-top: auto;
             margin-bottom: auto;
             color: white;
+            cursor: pointer;
         }
         &--chevronRight {
             position: absolute;
@@ -26,14 +30,37 @@
             margin-top: auto;
             margin-bottom: auto;
             color: white;
+            cursor: pointer;
+        }
+        &--counter {
+            position: absolute;
+            bottom: 1%;
+            right: 0;
+            left: 0;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+            text-align: center;
+            font-weight: 500;
+            font-size: 18px;
         }
     }
     &__top {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        @include mobile-only {
+            flex-direction: column;
+        }
         &--right {
             margin-top: 2em;
+            @include mobile-only {
+                display: flex;
+                flex-direction: row-reverse;
+                margin-top: 0.5em;
+                justify-content: space-between;
+                text-align: center;
+            }
         }
         &--nameAndImage {
             display: flex;
@@ -44,6 +71,9 @@
         }
         &--rating {
             margin-top: 1.5em;
+            @include mobile-only {
+                margin-top: 0.8em;
+            }
         }
         &--name {
             color: #FF6060;
@@ -86,8 +116,15 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        @include mobile-only {
+            flex-direction: column;
+            justify-content: center;
+        }
         &--both {
             width: 47%;
+            @include mobile-only {
+                width: 100%;
+            }
         }
         &--item {
             margin-top: 0em;
