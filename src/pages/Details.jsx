@@ -95,7 +95,7 @@ function Details() {
                 <div className='details'>
                     <div className='details__containerImage'>
                         <FontAwesomeIcon className='details__containerImage--chevronleft fa-5x' icon={faChevronLeft} onClick={reduceCarousel}/>
-                        <img className='details__containerImage--img' src={currentLogement.pictures[carouselItem]} alt={currentLogement.title}></img>
+                        <img className='details__containerImage--img' src={currentLogement.pictures[carouselItem]} alt={currentLogement.title} />
                         <FontAwesomeIcon className='details__containerImage--chevronRight fa-5x' icon={faChevronRight} onClick={augmentCarousel}/>
                         <p className='details__containerImage--counter'>{carouselItem + 1} / {currentLogement.pictures.length}</p>
                     </div>
@@ -125,7 +125,7 @@ function Details() {
                         <div className='details__accordeon--both'>
                             <Accordeon
                             Title="Description"
-                            >{currentLogement.description}</Accordeon>
+                            ><p>{currentLogement.description}</p></Accordeon>
                         </div>
                         <div className='details__accordeon--both'>
                             <Accordeon

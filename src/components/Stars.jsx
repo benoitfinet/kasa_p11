@@ -3,7 +3,7 @@ import greyStar from "../assets/greyStar.png";
 
 function Stars({star}) {
 
-    const test = () => {
+    const generateStars = () => {
         const row = [];
         for (var i = 0; i < star; i++) {
           row.push(<img key={i} src={pinkStar} alt="pinkStarRate"/>);
@@ -17,7 +17,7 @@ function Stars({star}) {
       };
     return (
         <div className='stars'>
-            {test()}
+            {generateStars()}
         </div>
     )
 }
