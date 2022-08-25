@@ -4,8 +4,7 @@ import Accordeon from "../components/Accordeon";
 import Error from './Error';
 import Stars from '../components/Stars';
 import '../sass/pages/details.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import Carousel from '../components/Carousel';
  
 function Details() {
     const { logementID } = useParams()
@@ -15,7 +14,6 @@ function Details() {
     const [loading, setLoading] = useState(true);
     const [error500, setError500] = useState(null);
     const [error404, setError404] = useState(true);
-    let [carouselItem, setcarouselItem] = useState(0);
 
     useEffect(() => {
         fetch('https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Front-End+V2/P9+React+1/logements.json')
@@ -49,28 +47,6 @@ function Details() {
         })
       });
 
-    function reduceCarousel() {
-        if(carouselItem === 0) {
-            setcarouselItem(carouselItem => carouselItem + currentLogement.pictures.length)
-        }
-        setcarouselItem(carouselItem => carouselItem - 1)
-    }
-
-    function augmentCarousel() {
-        if(carouselItem === currentLogement.pictures.length - 1) {
-            setcarouselItem(carouselItem => carouselItem - carouselItem)
-        } else {
-            setcarouselItem(carouselItem => carouselItem + 1)
-        }
-    }
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            augmentCarousel()
-        }, 4000);
-        return () => clearInterval(interval)
-    })
-
     if(loading) {
         return <>
             <div>A moment please...</div>
@@ -93,12 +69,7 @@ function Details() {
         <div>
             <div>
                 <div className='details'>
-                    <div className='details__containerImage'>
-                        <FontAwesomeIcon className='details__containerImage--chevronleft fa-5x' icon={faChevronLeft} onClick={reduceCarousel}/>
-                        <img className='details__containerImage--img' src={currentLogement.pictures[carouselItem]} alt={currentLogement.title} />
-                        <FontAwesomeIcon className='details__containerImage--chevronRight fa-5x' icon={faChevronRight} onClick={augmentCarousel}/>
-                        <p className='details__containerImage--counter'>{carouselItem + 1} / {currentLogement.pictures.length}</p>
-                    </div>
+                    <Carousel length={currentLogement.pictures.length} title={currentLogement.title} picture={currentLogement.pictures}/>
                     <div className='details__top'>
                         <div className='details__top--left'>
                             <p className='details__title'>{currentLogement.title}</p>
